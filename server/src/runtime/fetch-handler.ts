@@ -61,6 +61,13 @@ export async function handleFetch(request: Request, env: Env): Promise<Response>
   const url = new URL(request.url);
   const pathname = url.pathname;
 
+  // WeChat verification 微信验证
+  if (url.pathname === '/ebfa6fd035f4277d8952dd6f93166a05.txt') {
+    return new Response('0ac0789c114b121535a1a21dff82847d03839781', {
+      headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+    });
+  }
+
   if (isRootFeedRequest(pathname)) {
     return getApp().fetch(request, env);
   }
