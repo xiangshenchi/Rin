@@ -88,12 +88,14 @@ export function buildR2BucketInfo(r2BucketName: string, accountId: string): R2Bu
 }
 
 export function buildWranglerTriggersConfig(preview = false) {
-  return preview
-    ? ""
-    : stripIndent(`
-        [triggers]
-        crons = ["*/20 * * * *"]
-      `);
+  // 取消cron定时
+  return "";
+  // return preview
+  //   ? ""
+  //   : stripIndent(`
+  //       [triggers]
+  //       crons = ["*/20 * * * *"]
+  //     `);
 }
 
 export function buildWranglerQueueConfig(taskQueueName: string, preview = false) {
