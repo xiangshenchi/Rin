@@ -227,6 +227,26 @@ export function Settings() {
               setConfigValue("client", "site.page_size", value);
             }}
           />
+          <ItemInput
+            title="网站起始时间"
+            description="用于计算网站运行时长，格式：YYYY-MM-DD 或 YYYY-MM-DDTHH:mm:ss"
+            configKeyTitle="Site Start Date"
+            value={String(clientConfig.get("site.start_date") ?? "")}
+            placeholder="例如：2024-01-01"
+            onChange={(value) => {
+              setConfigValue("client", "site.start_date", value);
+            }}
+          />
+          <ItemInput
+            title="ICP 备案号"
+            description="网站的 ICP 备案号，会显示在页底"
+            configKeyTitle="ICP Number"
+            value={String(clientConfig.get("site.icp") ?? "")}
+            placeholder="例如：京ICP备12345678号"
+            onChange={(value) => {
+              setConfigValue("client", "site.icp", value);
+            }}
+          />
 
           <ItemTitle title={t("settings.personalization.title")} />
           <div className="w-full">
