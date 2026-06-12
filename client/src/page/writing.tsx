@@ -188,12 +188,12 @@ export function WritingPage({ id }: { id?: number }) {
         .get(id)
         .then(({ data }) => {
           if (data) {
-            if (title == "" && data.title) setTitle(data.title);
-            if (tags == "" && Array.isArray(data.hashtags))
+            if (data.title) setTitle(data.title);
+            if (Array.isArray(data.hashtags))
               setTags(data.hashtags.map(({ name }: {name: string}) => `#${name}`).join(" "));
-            if (alias == "" && (data as any).alias) setAlias((data as any).alias);
-            if (content == "") setContent(data.content);
-            if (summary == "") setSummary((data as any).summary || "");
+            if ((data as any).alias) setAlias((data as any).alias);
+            if (data.content) setContent(data.content);
+            if ((data as any).summary) setSummary((data as any).summary || "");
             setListed((data as any).listed === 1);
             setDraft((data as any).draft === 1);
             setCreatedAt(new Date(data.createdAt));
